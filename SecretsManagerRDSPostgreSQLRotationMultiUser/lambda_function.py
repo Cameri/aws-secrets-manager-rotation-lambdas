@@ -362,11 +362,7 @@ def get_alt_username(current_username):
         ValueError: If the new username length would exceed the maximum allowed
 
     """
-    clone_suffix = "_clone"
-    if current_username.endswith(clone_suffix):
-        return current_username[:(len(clone_suffix) * -1)]
+    if current_username.endswith("2"):
+        return current_username[:-1] + "1"
     else:
-        new_username = current_username + clone_suffix
-        if len(new_username) > 63:
-            raise ValueError("Unable to clone user, username length with _clone appended would exceed 63 characters")
-        return new_username
+        return current_username[:-1] + "2"
